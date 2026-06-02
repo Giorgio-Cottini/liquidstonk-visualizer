@@ -1,5 +1,5 @@
 """
-gio_exporter.py — Standalone exporter for GioVisualizer-compatible JSON.
+logger.py — Standalone exporter for LiquidStonk-compatible JSON.
 
 Drop this file into any Python backtester. Call `export_result()` with your
 strategy output; it writes a JSON file that GioVisualizer can load directly.
@@ -23,25 +23,25 @@ from typing import Dict, List, Optional
 _METRIC_KEYS = ("PnL", "DD", "Sharpe", "Sortino")
 
 
-class ExporterError(ValueError):
+class LoggerError(ValueError):
     """Raised when payload does not satisfy GioVisualizer invariants."""
 
 
 def _check_finite_numbers(name: str, seq: List[float]) -> None:
     for i, v in enumerate(seq):
         if not isinstance(v, (int, float)) or not math.isfinite(v):
-            raise ExporterError(f"{name}[{i}] = {v!r} is not a finite number")
+            raise LoggerError(f"{name}[{i}] = {v!r} is not a finite number")
 
 
 def _check_metrics(name: str, m: Dict[str, float]) -> None:
     if not isinstance(m, dict):
-        raise ExporterError(f"{name}: expected dict, got {type(m).__name__}")
+        raise LoggerError(f"{name}: expected dict, got {type(m).__name__}")
     for k in _METRIC_KEYS:
         if k not in m:
-            raise ExporterError(f"{name}: missing required key '{k}'")
+            raise LoggerError(f"{name}: missing required key '{k}'")
         v = m[k]
         if not isinstance(v, (int, float)) or not math.isfinite(v):
-            raise ExporterError(f"{name}.{k} = {v!r} is not a finite number")
+            raise LoggerError(f"{name}.{k} = {v!r} is not a finite number")
 
 
 def _validate_payload(
@@ -60,48 +60,48 @@ def _validate_payload(
     margin_mode: str,
 ) -> None:
     if not isinstance(strategy, str) or not strategy.strip():
-        raise ExporterError("strategy must be a non-empty string")
+        raise LoggerError("strategy must be a non-empty string")
     if margin_mode not in ("cross", "isolated"):
-        raise ExporterError("margin_mode: expected 'cross' or 'isolated'")
+        raise LoggerError("margin_mode: expected 'cross' or 'isolated'")
 
     if not isinstance(timeline, list) or not timeline:
-        raise ExporterError("timeline must be a non-empty list of ISO-8601 strings")
+        raise LoggerError("timeline must be a non-empty list of ISO-8601 strings")
 
     last_dt: Optional[datetime] = None
     seen = set()
     for i, ts in enumerate(timeline):
         if not isinstance(ts, str):
-            raise ExporterError(f"timeline[{i}] must be a string")
+            raise LoggerError(f"timeline[{i}] must be a string")
         try:
             dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
         except ValueError as e:
-            raise ExporterError(f"timeline[{i}]={ts!r} not ISO-8601: {e}") from e
+            raise LoggerError(f"timeline[{i}]={ts!r} not ISO-8601: {e}") from e
         if last_dt is not None and dt <= last_dt:
-            raise ExporterError(
+            raise LoggerError(
                 f"timeline[{i}]={ts!r} not strictly after previous timestamp"
             )
         last_dt = dt
         if ts in seen:
-            raise ExporterError(f"timeline[{i}]={ts!r} is a duplicate")
+            raise LoggerError(f"timeline[{i}]={ts!r} is a duplicate")
         seen.add(ts)
 
     T = len(timeline)
     if not isinstance(total_equity, list) or len(total_equity) != T:
-        raise ExporterError(
+        raise LoggerError(
             f"total_equity: length {len(total_equity)} != timeline length {T}"
         )
     _check_finite_numbers("total_equity", total_equity)
 
     def _check_perp_series(field: str, d: Dict[str, List[float]]) -> None:
         if not isinstance(d, dict):
-            raise ExporterError(f"{field}: expected dict")
+            raise LoggerError(f"{field}: expected dict")
         for perp, series in d.items():
             if not isinstance(perp, str):
-                raise ExporterError(f"{field}: keys must be strings, got {perp!r}")
+                raise LoggerError(f"{field}: keys must be strings, got {perp!r}")
             if not isinstance(series, list):
-                raise ExporterError(f"{field}.{perp}: expected list")
+                raise LoggerError(f"{field}.{perp}: expected list")
             if len(series) != T:
-                raise ExporterError(
+                raise LoggerError(
                     f"{field}.{perp}: length {len(series)} != timeline length {T}"
                 )
             _check_finite_numbers(f"{field}.{perp}", series)
@@ -111,11 +111,11 @@ def _validate_payload(
 
     _check_metrics("metrics_total", metrics_total)
     if not isinstance(metrics_per_perp, dict):
-        raise ExporterError("metrics_per_perp: expected dict")
+        raise LoggerError("metrics_per_perp: expected dict")
     for perp, m in metrics_per_perp.items():
         _check_metrics(f"metrics_per_perp.{perp}", m)
         if perp not in per_perp_equity:
-            raise ExporterError(
+            raise LoggerError(
                 f"metrics_per_perp.{perp}: no matching entry in per_perp_equity"
             )
 
@@ -125,29 +125,38 @@ def _validate_payload(
         ("n_liquidated", n_liquidated),
     ]:
         if not isinstance(v, int) or v < 0:
-            raise ExporterError(f"{name}: expected non-negative int, got {v!r}")
+            raise LoggerError(f"{name}: expected non-negative int, got {v!r}")
+
+    def _is_finite(x: object) -> bool:
+        return isinstance(x, (int, float)) and math.isfinite(x)
 
     if not isinstance(liquidation_events, list):
-        raise ExporterError("liquidation_events: expected list")
+        raise LoggerError("liquidation_events: expected list")
     for i, e in enumerate(liquidation_events):
         if not isinstance(e, dict):
-            raise ExporterError(f"liquidation_events[{i}]: expected dict")
-        for key in ("timestamp", "asset", "net_cash_loss"):
+            raise LoggerError(f"liquidation_events[{i}]: expected dict")
+        for key in ("timestamp", "asset"):
             if key not in e:
-                raise ExporterError(f"liquidation_events[{i}]: missing '{key}'")
+                raise LoggerError(f"liquidation_events[{i}]: missing '{key}'")
         if e["timestamp"] not in seen:
-            raise ExporterError(
+            raise LoggerError(
                 f"liquidation_events[{i}].timestamp={e['timestamp']!r} not present in timeline"
             )
         if e["asset"] not in per_perp_equity:
-            raise ExporterError(
+            raise LoggerError(
                 f"liquidation_events[{i}].asset={e['asset']!r} not present in per_perp_equity"
             )
-        loss = e["net_cash_loss"]
-        if not isinstance(loss, (int, float)) or not math.isfinite(loss):
-            raise ExporterError(
-                f"liquidation_events[{i}].net_cash_loss = {loss!r} is not finite"
+        # Match the visualizer's loader: a finite net_cash_loss OR realized_pnl
+        # is enough (loader derives net_cash_loss = realized_pnl - fee otherwise).
+        if not _is_finite(e.get("net_cash_loss")) and not _is_finite(e.get("realized_pnl")):
+            raise LoggerError(
+                f"liquidation_events[{i}]: expected finite 'net_cash_loss' or 'realized_pnl'"
             )
+        for key in ("account_equity", "maintenance_margin", "fill_price", "fee"):
+            if key in e and not _is_finite(e[key]):
+                raise LoggerError(
+                    f"liquidation_events[{i}].{key} = {e[key]!r} is not finite"
+                )
 
 
 def export_result(

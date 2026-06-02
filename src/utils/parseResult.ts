@@ -153,8 +153,10 @@ export function parseBacktestResult(raw: unknown): BacktestResult {
     issues.push("timeline: must contain at least one bar");
   }
 
-  // Strict ascending + finite + no-duplicates check.
-  const tsIndex = new Map<string, number>();
+  // Strict ascending + finite + no-duplicates check. Only membership is needed
+  // downstream (liquidation timestamps), so a Set suffices — the render-time
+  // timestamp→index map is built lazily by buildTimelineIndex.
+  const tsSeen = new Set<string>();
   let lastTs = -Infinity;
   for (let i = 0; i < timeline.length; i++) {
     const ts = timeline[i];
@@ -169,10 +171,10 @@ export function parseBacktestResult(raw: unknown): BacktestResult {
       );
     }
     lastTs = ms;
-    if (tsIndex.has(ts)) {
+    if (tsSeen.has(ts)) {
       issues.push(`timeline[${i}]="${ts}" is a duplicate`);
     } else {
-      tsIndex.set(ts, i);
+      tsSeen.add(ts);
     }
   }
 
@@ -273,7 +275,7 @@ export function parseBacktestResult(raw: unknown): BacktestResult {
       const e = rawLiq[i];
       if (!validateLiquidationEvent(e, i, issues)) continue;
       const le = normalizeLiquidationEvent(e);
-      if (!tsIndex.has(le.timestamp)) {
+      if (!tsSeen.has(le.timestamp)) {
         issues.push(
           `liquidation_events[${i}].timestamp="${le.timestamp}" not present in timeline`,
         );

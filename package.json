@@ -12,12 +12,13 @@
     "@mantine/core": "^7.14.0",
     "@mantine/dropzone": "^7.14.0",
     "@mantine/hooks": "^7.14.0",
-    "plotly.js": "^2.35.2",
+    "plotly.js-basic-dist-min": "^2.35.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-plotly.js": "^2.6.0"
   },
   "devDependencies": {
+    "@types/plotly.js": "^2.35.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/react-plotly.js": "^2.6.3",

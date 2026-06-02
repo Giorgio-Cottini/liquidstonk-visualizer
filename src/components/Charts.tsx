@@ -1,9 +1,15 @@
 import { useMemo } from "react";
 import type { Layout } from "plotly.js";
-import Plot from "react-plotly.js";
+import createPlotlyComponent from "react-plotly.js/factory";
+import Plotly from "plotly.js-basic-dist-min";
+
+// Bundle only the basic (scatter) Plotly build — the full plotly.js dist blows
+// the build worker's heap. We render scatter traces exclusively.
+const Plot = createPlotlyComponent(Plotly);
 import type { BacktestResult } from "../types";
 import StatsPanel from "./StatsPanel";
 import { assetColorMap } from "../utils/colors";
+import { formatCompact } from "../utils/format";
 import { buildTimelineIndex } from "../utils/parseResult";
 import { useTheme } from "../context/ThemeContext";
 import s from "./Charts.module.css";
@@ -385,13 +391,6 @@ function MetricPill({
       </span>
     </div>
   );
-}
-
-function formatCompact(v: number): string {
-  const abs = Math.abs(v);
-  if (abs >= 1_000_000) return `${(v / 1_000_000).toFixed(2)}M`;
-  if (abs >= 1000) return `${(v / 1000).toFixed(1)}k`;
-  return v.toFixed(2);
 }
 
 interface LiquidationTableProps {

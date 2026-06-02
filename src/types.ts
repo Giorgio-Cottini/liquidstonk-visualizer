@@ -16,6 +16,14 @@ export interface LiquidationEvent {
   fee?: number;
 }
 
+/**
+ * Normalized backtest result — the shape returned by `parseBacktestResult`.
+ *
+ * Every field is guaranteed present here: fields that are optional in the
+ * source JSON (margin_mode, per_perp_position, liquidation_events, the pnl/fee
+ * scalars) are filled with documented defaults by the parser. See README.md for
+ * which fields the *input* JSON may omit, and parseResult.ts for the defaults.
+ */
 export interface BacktestResult {
   strategy: string;
   margin_mode: "cross" | "isolated";

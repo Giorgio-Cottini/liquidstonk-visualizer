@@ -42,7 +42,7 @@ export_result(
 )
 ```
 
-`export_result` raises `loggerError` on any contract violation, so a file that writes successfully will load successfully. Run the module directly (`python logger.py`) to generate a small sample under `results/` and drop-test the live site.
+`export_result` raises `LoggerError` on any contract violation, so a file that writes successfully will load successfully. Run the module directly (`python logger.py`) to generate a small sample under `results/` and drop-test the live site.
 
 You don't have to use the logger — emit the schema however you like. The logger is just the reference implementation of the contract.
 

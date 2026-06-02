@@ -1,11 +1,9 @@
 import { useMemo } from 'react';
 import type { BacktestResult } from '../types';
+import { formatCompact } from '../utils/format';
 import s from './StatsPanel.module.css';
 
 interface Props { result: BacktestResult; }
-
-const fmtNum = (v: number): string =>
-  Math.abs(v) >= 1000 ? `${(v / 1000).toFixed(1)}k` : v.toFixed(2);
 
 export default function StatsPanel({ result }: Props) {
   const { best5, worst5 } = useMemo(() => {
@@ -45,7 +43,7 @@ function AssetRow({ name, pnl, positive }: { name: string; pnl: number; positive
     <div className={s.row}>
       <span className={s.rowName}>{name}</span>
       <span className={`${s.rowValue} ${positive ? s.positive : s.negative}`}>
-        {pnl > 0 ? '+' : ''}${fmtNum(pnl)}
+        {pnl > 0 ? '+' : ''}${formatCompact(pnl)}
       </span>
     </div>
   );

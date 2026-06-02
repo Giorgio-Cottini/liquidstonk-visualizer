@@ -7,3 +7,4 @@ __pycache__/
 .netlify/
 .DS_Store
 *.local
+netlify.toml # -> github setup differs due to netlify deployment

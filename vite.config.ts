@@ -5,6 +5,6 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 export default defineConfig({
   plugins: [react(), nodePolyfills()],
   optimizeDeps: {
-    include: ['react-plotly.js', 'plotly.js'],
+    include: ['react-plotly.js', 'plotly.js-basic-dist-min'],
   },
 })
