@@ -1,0 +1,132 @@
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--border-card);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.assetCount {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.section {
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sectionPositive {
+  background: rgba(52, 199, 89, 0.07);
+}
+
+.sectionNegative {
+  background: rgba(255, 59, 48, 0.07);
+}
+
+.sectionDivider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 0 20px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionLabelPositive {
+  font-size: 13px;
+  font-weight: 600;
+  color: #16A34A;
+}
+
+.sectionLabelNegative {
+  font-size: 13px;
+  font-weight: 600;
+  color: #DC2626;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.smallBtn {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  height: 28px;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.smallBtn:hover {
+  background: var(--bg-card);
+}
+
+.deselectBtn {
+  color: var(--text-secondary);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 7px;
+  border: 1.5px solid var(--border-primary);
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s, border-color 0.15s;
+}
+
+.badge:hover {
+  border-color: var(--color-accent);
+}
+
+.badgeInactive {
+  opacity: 0.4;
+}
+
+.colorDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.badgeText {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+}

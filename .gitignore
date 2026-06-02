@@ -1,0 +1,9 @@
+CLAUDE.md
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.vite/
+.netlify/
+.DS_Store
+*.local

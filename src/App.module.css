@@ -1,0 +1,126 @@
+.landingWrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-page);
+}
+
+.landingCard {
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  background: var(--bg-card);
+  box-shadow: var(--border-card);
+}
+
+.loadingWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+.logoLanding {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 12px;
+}
+
+.logoSmall {
+  width: 32px;
+  height: 32px;
+}
+
+.page {
+  min-height: 100vh;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-page);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 24px;
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.themeBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, opacity 0.2s;
+  background: #1C1917;
+  color: #F0EBE3;
+}
+
+.themeBtn:hover {
+  opacity: 0.8;
+}
+
+:global(:root.dark) .themeBtn {
+  background: #E8E3DC;
+  color: #1C1917;
+}
+
+.loadBtn {
+  font-size: 14px;
+  color: var(--color-accent);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 0;
+}
+
+.loadBtn:hover {
+  text-decoration: underline;
+}
+
+.content {
+  padding: 20px 24px 40px;
+}
+
+.errorText {
+  color: var(--color-negative);
+  font-size: 13px;
+  margin-top: 16px;
+  text-align: left;
+  white-space: pre-wrap;
+  max-height: 240px;
+  overflow-y: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  padding: 12px;
+  background: var(--bg-page);
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+}

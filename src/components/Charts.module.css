@@ -1,0 +1,336 @@
+/* ── PnlChart ─────────────────────────────────── */
+
+.pnlCard {
+  border-radius: 12px;
+  display: flex;
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--border-card);
+}
+
+.pnlChartWrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pnlTop {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.pnlLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.pnlValue {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.positive {
+  color: var(--color-positive);
+}
+
+.negative {
+  color: var(--color-negative);
+}
+
+.dividerV {
+  width: 1px;
+  height: 36px;
+  background: var(--border-grid);
+  margin: 0 4px;
+}
+
+.liqIndicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 32px;
+  border-radius: 7px;
+  color: var(--color-negative);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ── PositionsChart ──────────────────────────── */
+
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--border-card);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cardSubtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.legend {
+  display: flex;
+  gap: 14px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legendLine {
+  width: 16px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.legendText {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.plotPadding {
+  padding: 12px 20px 0 20px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+/* ── MetricPill ──────────────────────────────── */
+
+.metricPill {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 12px;
+}
+
+.metricLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.metricValue {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── PerAssetCards ───────────────────────────── */
+
+.perAssetSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.perAssetHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 12px 0;
+}
+
+.sortLabel {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.perAssetGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.assetCard {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--border-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.assetCardHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 12px 14px 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.assetName {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.assetPnl {
+  padding-left: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cardChartWrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 4px 2px;
+}
+
+.chartPlotFill {
+  flex: 1;
+  min-height: 160px;
+}
+
+.sparkLabel {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0 4px 2px;
+}
+
+.sparkDivider {
+  height: 1px;
+  background: var(--border-grid);
+  margin: 0 12px;
+}
+
+.assetHeaderTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.assetHeaderMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: #7A7268; /* adjust to theme */
+}
+
+.assetLiqCount {
+  color: var(--color-negative);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.metricSmall {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.liquidationTableWrap {
+  overflow-x: auto;
+  padding: 4px 12px 14px;
+}
+
+.liquidationTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.liquidationTable thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border-grid);
+}
+
+.liquidationTable tbody td {
+  padding: 14px 10px;
+  border-bottom: 1px solid var(--border-grid);
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.liquidationTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.liquidationTable tbody tr {
+  transition: background 120ms ease;
+}
+
+.liquidationTable tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.assetCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.assetDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.timeCell {
+  white-space: nowrap;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.liqBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 59, 48, 0.12);
+  color: #ff453a;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.liqCountBadge {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 59, 48, 0.12);
+  color: #ff453a;
+  font-size: 12px;
+  font-weight: 600;
+}
