@@ -1,19 +1,36 @@
 .landingWrap {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-page);
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 42%, transparent 0%, var(--grid-fade) 78%),
+    repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 40px),
+    var(--bg-page);
 }
 
 .landingCard {
-  border-radius: 16px;
-  padding: 40px;
+  position: relative;
+  z-index: 1;
+  border-radius: 20px;
+  padding: 44px 40px;
   max-width: 440px;
   width: 100%;
   text-align: center;
-  background: var(--bg-card);
-  box-shadow: var(--border-card);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  animation: cardIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
 }
 
 .loadingWrap {
@@ -123,4 +140,61 @@
   background: var(--bg-page);
   border-radius: 8px;
   border: 1px solid var(--border-primary);
+}
+
+.footer {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.footerLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.footerLink:hover {
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.footerLink svg {
+  display: block;
+}
+
+.footerDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+  opacity: 0.6;
+}
+
+.versionChip {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border-primary);
+  background: var(--glass-bg);
+  color: var(--text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landingCard {
+    animation: none;
+  }
 }
