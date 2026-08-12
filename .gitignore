@@ -1,10 +1,31 @@
-CLAUDE.md
+# ═══ PRIVATE ═══════════════════════════════════════════════════════
+# Reveals the person, or third-party content that must not be redistributed.
+# A path here is a deliberate privacy or licensing decision.
+
+# ═══ REGENERABLE ═══════════════════════════════════════════════════
+# A documented command rebuilds this. The command follows each entry.
+# An entry with no command belongs under a different header.
+
+# Rebuild: npm install.
 node_modules/
+
+# Rebuild: npm run build.
 dist/
+.vite/
+
+# Rebuild: netlify deploy config regenerates on next deploy.
+.netlify/
+
+# Python bytecode — machine- and interpreter-version specific, never source.
 __pycache__/
 *.pyc
-.vite/
-.netlify/
+
+# ═══ MACHINE-LOCAL ═════════════════════════════════════════════════
+# True of this laptop only. Invalid in any other checkout.
+
 .DS_Store
 *.local
 netlify.toml # -> github setup differs due to netlify deployment
+
+# Working directories. Never tracked, at any depth.
+tmp/
