@@ -1,0 +1,45 @@
+.claude/
+  launch.json
+dist/
+  assets/
+    index-Bpjdrq83.js
+    index-CVpl5PAN.css
+    logo-Cb92mghv.png
+  index.html
+src/
+  components/
+    AssetSelection.module.css
+    AssetSelection.tsx
+    Charts.module.css
+    Charts.tsx
+    Dashboard.module.css
+    Dashboard.tsx
+    DropZone.module.css
+    DropZone.tsx
+    StatsPanel.module.css
+    StatsPanel.tsx
+  context/
+    ThemeContext.tsx
+  utils/
+    colors.ts
+    format.ts
+    logo.png
+    parseResult.ts
+  App.module.css
+  App.tsx
+  main.tsx
+  types.ts
+  vite-env.d.ts
+.gitignore
+CLAUDE.md
+index.html
+logger.py
+netlify.toml
+package-lock.json
+package.json
+postcss.config.cjs
+README.md
+region.yml
+tsconfig.json
+tsconfig.node.json
+vite.config.ts

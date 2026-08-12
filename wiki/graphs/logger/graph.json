@@ -1,0 +1,307 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "logger.py",
+      "file_type": "code",
+      "source_file": "logger.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "logger",
+      "community": 1,
+      "norm_label": "logger.py"
+    },
+    {
+      "label": "LoggerError",
+      "file_type": "code",
+      "source_file": "logger.py",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "logger_loggererror",
+      "community": 0,
+      "norm_label": "loggererror"
+    },
+    {
+      "label": "ValueError",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "valueerror",
+      "community": 0,
+      "norm_label": "valueerror"
+    },
+    {
+      "label": "_check_finite_numbers()",
+      "file_type": "code",
+      "source_file": "logger.py",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "logger_check_finite_numbers",
+      "community": 0,
+      "norm_label": "_check_finite_numbers()"
+    },
+    {
+      "label": "_check_metrics()",
+      "file_type": "code",
+      "source_file": "logger.py",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "logger_check_metrics",
+      "community": 0,
+      "norm_label": "_check_metrics()"
+    },
+    {
+      "label": "_validate_payload()",
+      "file_type": "code",
+      "source_file": "logger.py",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "logger_validate_payload",
+      "community": 0,
+      "norm_label": "_validate_payload()"
+    },
+    {
+      "label": "export_result()",
+      "file_type": "code",
+      "source_file": "logger.py",
+      "source_location": "L162",
+      "_origin": "ast",
+      "id": "logger_export_result",
+      "community": 2,
+      "norm_label": "export_result()"
+    },
+    {
+      "label": "_max_drawdown()",
+      "file_type": "code",
+      "source_file": "logger.py",
+      "source_location": "L291",
+      "_origin": "ast",
+      "id": "logger_max_drawdown",
+      "community": 1,
+      "norm_label": "_max_drawdown()"
+    },
+    {
+      "label": "_sharpe()",
+      "file_type": "code",
+      "source_file": "logger.py",
+      "source_location": "L299",
+      "_origin": "ast",
+      "id": "logger_sharpe",
+      "community": 1,
+      "norm_label": "_sharpe()"
+    },
+    {
+      "label": "logger.py \u2014 Standalone exporter for LiquidStonk-compatible JSON.  Drop this fi",
+      "file_type": "rationale",
+      "source_file": "logger.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "logger_rationale_1",
+      "community": 1,
+      "norm_label": "logger.py \u2014 standalone exporter for liquidstonk-compatible json.  drop this fi"
+    },
+    {
+      "label": "Raised when payload does not satisfy GioVisualizer invariants.",
+      "file_type": "rationale",
+      "source_file": "logger.py",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "logger_rationale_27",
+      "community": 0,
+      "norm_label": "raised when payload does not satisfy giovisualizer invariants."
+    },
+    {
+      "label": "Write a GioVisualizer-compatible JSON file.      Parameters     ----------",
+      "file_type": "rationale",
+      "source_file": "logger.py",
+      "source_location": "L184",
+      "_origin": "ast",
+      "id": "logger_rationale_184",
+      "community": 2,
+      "norm_label": "write a giovisualizer-compatible json file.      parameters     ----------"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "logger",
+      "target": "logger_check_finite_numbers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "logger",
+      "target": "logger_check_metrics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L162",
+      "weight": 1.0,
+      "source": "logger",
+      "target": "logger_export_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "logger",
+      "target": "logger_loggererror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L291",
+      "weight": 1.0,
+      "source": "logger",
+      "target": "logger_max_drawdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L299",
+      "weight": 1.0,
+      "source": "logger",
+      "target": "logger_sharpe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "logger",
+      "target": "logger_validate_payload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "logger_rationale_1",
+      "target": "logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "logger_check_finite_numbers",
+      "target": "logger_loggererror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "logger_check_metrics",
+      "target": "logger_loggererror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "logger_loggererror",
+      "target": "valueerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "logger_rationale_27",
+      "target": "logger_loggererror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "logger_validate_payload",
+      "target": "logger_loggererror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "logger_validate_payload",
+      "target": "logger_check_finite_numbers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "logger_validate_payload",
+      "target": "logger_check_metrics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L233",
+      "weight": 1.0,
+      "source": "logger_export_result",
+      "target": "logger_validate_payload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "logger.py",
+      "source_location": "L184",
+      "weight": 1.0,
+      "source": "logger_rationale_184",
+      "target": "logger_export_result",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "49a6ccb87f6da9ba0c20954502853b84956ed9db"
+}
