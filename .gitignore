@@ -29,3 +29,6 @@ netlify.toml # -> github setup differs due to netlify deployment
 
 # Working directories. Never tracked, at any depth.
 tmp/
+
+# Planner instances. Rebuild: /planner:deploy general.
+.planner-*/

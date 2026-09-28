@@ -1,0 +1,14 @@
+{
+  "outputStyle": "planner:pm",
+  "model": "fable",
+  "claudeMdExcludes": ["**/GeorgOS/CLAUDE.md"],
+  "permissions": {
+    "deny": [
+      "Read(//**/GiorgIA/**)",
+      "Edit(//**/GiorgIA/**)",
+      "Grep(//**/GiorgIA/**)",
+      "Glob(//**/GiorgIA/**)",
+      "Bash(*GiorgIA*)"
+    ]
+  }
+}

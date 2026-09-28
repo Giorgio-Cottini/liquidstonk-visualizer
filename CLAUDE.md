@@ -13,6 +13,8 @@ User-facing docs already exist:
 
 This file is the **maintainer/agent brief**: what the repo is, how it is wired, and what must change to ship it standalone.
 
+**Planner:** `.planner-general/workflow.md`, read by the PM at session start. The state lives in the GitHub issues, milestones and PRs of `liquidstonk-visualizer`.
+
 ---
 
 ## STACK
