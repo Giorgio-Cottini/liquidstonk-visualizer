@@ -75,54 +75,10 @@ LiquidStonk/
 
 ## GITHUB-READY: WHAT MUST CHANGE
 
-State of repo as scanned — blockers to standalone publish:
-
-### 1. `node_modules/` is committed (17,810 files)
-
-Generated deps tracked in git. Must be untracked. From repo root:
-
-```bash
-git rm -r --cached LiquidStonk/node_modules
-git rm -r --cached LiquidStonk/dist        # if present
-```
-
-### 2. No `.gitignore` in LiquidStonk
-
-Add `LiquidStonk/.gitignore`:
-
-```gitignore
-node_modules/
-dist/
-__pycache__/
-*.pyc
-.vite/
-.netlify/
-.DS_Store
-*.local
-```
-
-### 3. Parent `.gitignore` excludes the whole folder
-
-The monorepo root `.gitignore` lists `LiquidStonk/`, so the directory is ignored upstream and its files only exist in git via force-add. To ship standalone, the canonical move is to **split LiquidStonk into its own repo** (`git subtree split` or fresh `git init` from a copy), where `node_modules`/`dist` are ignored and source is tracked normally.
-
-> Project HARD CONSTRAINT: never modify the parent `.gitignore`. The split/new-repo path is the github-ready route — do not edit the monorepo ignore rules.
-
-### 4. Verify a clean install builds
-
-After untracking, confirm reproducibility:
-
-```bash
-rm -rf node_modules dist
-npm ci          # uses package-lock.json — must succeed offline-of-source
-npm run build   # tsc strict + vite build must pass
-npm run preview # smoke test dist/
-```
-
-### 5. Optional polish for a public repo
+The repository is standalone (`liquidstonk-visualizer`), `node_modules/` and `dist/` are ignored and untracked, and `npm ci && npm run build` passes from a clean tree. Remaining polish for a public repo:
 
 * `LICENSE` (none present)
-* trim duplicated content between `README.md` and `instructions.md` (large overlap)
-* sample JSON committed under `examples/` so a fresh cloner can drop-test immediately
+* sample JSON under `examples/` so a fresh cloner can drop-test immediately
 
 ---
 
